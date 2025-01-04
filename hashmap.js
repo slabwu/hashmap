@@ -1,4 +1,4 @@
-import { LinkedList } from './linkedList.js'
+import { linkedList } from './linkedList.js'
 
 export function test(text) {
     console.log(text);
@@ -11,7 +11,8 @@ export class HashMap {
     constructor() {
         this.#capacity = 16;
         this.#loadFactor = 0.75;
-        this.#buckets = Array(this.#capacity);
+        this.#buckets = Array(this.#capacity).fill(new linkedList());
+        console.log(this.#buckets)
     }
 
     hash(key) {
