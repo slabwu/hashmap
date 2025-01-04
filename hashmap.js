@@ -41,4 +41,10 @@ export class HashMap {
         if (bucket === undefined) return null;
         return bucket.find(key);
     }
+
+    has(key) {
+        let bucket = this.#buckets[this.hash(key) % this.#capacity];
+        if (bucket === undefined) return false;
+        return bucket.contains(key);
+    }
 }

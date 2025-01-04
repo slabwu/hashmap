@@ -75,14 +75,14 @@ export class linkedList {
     //     this.#tail.next = null;
     // }
 
-    // contains(value) {
-    //     let node = this.#head;
-    //     while (node !== null) {
-    //         if (node.value === value) return true; 
-    //         node = node.next;
-    //     }
-    //     return false;
-    // }
+    contains(key) {
+        let node = this.#head;
+        while (node !== null) {
+            if (node[key]) return true; 
+            node = node.next;
+        }
+        return false;
+    }
 
     find(key) {
         let node = this.#head;
