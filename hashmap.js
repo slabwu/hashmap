@@ -48,6 +48,12 @@ export class HashMap {
         return bucket.contains(key);
     }
 
+    remove(key) {
+        let bucket = this.bucket(key);
+        if (bucket === undefined) return false;
+        return bucket.delete(key);
+    }
+
     bucket(key) {
         return this.#buckets[this.hash(key) % this.#capacity];
     }

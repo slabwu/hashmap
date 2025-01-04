@@ -95,6 +95,20 @@ export class linkedList {
         return null;
     }
 
+    delete(key) {
+        let node = this.#head;
+        let index = 0;
+        while (node !== null) {
+            if (node[key]) {
+                this.removeAt(index);
+                return true;
+            } 
+            index++;
+            node = node.next;
+        }
+        return false;
+    }
+
     // insertAt(value, index) {
     //     if (index === 0) {
     //         this.prepend(value);
@@ -108,18 +122,18 @@ export class linkedList {
     //     }
     // }
 
-    // removeAt(index) {
-    //     if (index === 0) {
-    //         this.#head = this.#head.next;
-    //     } else if (index === this.size - 1) {
-    //         this.pop();
-    //     } else if (index > this.size - 1) {
-    //         console.log('Index does not exist');
-    //         return;
-    //     } else {
-    //         this.at(index - 1, true).next = this.at(index + 1, true);
-    //     }
-    // }
+    removeAt(index) {
+        if (index === 0) {
+            this.#head = this.#head.next;
+        } else if (index === this.size - 1) {
+            this.pop();
+        } else if (index > this.size - 1) {
+            console.log('Index does not exist');
+            return;
+        } else {
+            this.at(index - 1, true).next = this.at(index + 1, true);
+        }
+    }
 }
 
 class Node {

@@ -5,6 +5,9 @@ let map = new HashMap();
 map.set('dog', 'blue');
 map.set('panther', 'pink');
 map.set('horse', 'brown');
+
+test(map.remove('dog'));
+
 test(map.get('dog'));
 test(map.get('cat'));
 test(map.has('dog'));
