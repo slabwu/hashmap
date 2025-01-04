@@ -2,4 +2,6 @@ import { test, HashMap } from './hashmap.js';
 
 let map = new HashMap();
 
-test(map.hash('dog'));
+map.set('dog', 'blue');
+test(map.get('dog'));
+test(map.get('cat'));
