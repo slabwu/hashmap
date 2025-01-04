@@ -57,4 +57,14 @@ export class HashMap {
     bucket(key) {
         return this.#buckets[this.hash(key) % this.#capacity];
     }
+
+    length() {
+        let length = 0;
+        this.#buckets.forEach(bucket => {
+            if (bucket) {
+                length += bucket.size;
+            }
+        });
+        return length;
+    }
 }

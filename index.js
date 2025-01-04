@@ -12,3 +12,5 @@ test(map.get('dog'));
 test(map.get('cat'));
 test(map.has('dog'));
 test(map.has('cat'));
+
+test(map.length());

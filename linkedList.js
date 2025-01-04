@@ -44,23 +44,23 @@ export class linkedList {
         this.#tail = this.#list;
     }
 
-    // get size() {
-    //     let size = 0;
-    //     let node = this.#head;
-    //     while(node !== null) {
-    //         size++;
-    //         node = node.next;
-    //     }
-    //     return size;
-    // }
+    get size() {
+        let size = 0;
+        let node = this.#head;
+        while(node !== null) {
+            size++;
+            node = node.next;
+        }
+        return size;
+    }
 
-    // get head() {
-    //     return this.#head.value;
-    // }
+    get head() {
+        return this.#head.value;
+    }
 
-    // get tail() {
-    //     return this.#tail.value;
-    // }
+    get tail() {
+        return this.#tail.value;
+    }
 
     // at(index, check = false) {
     //     let node = this.#head;
