@@ -1,3 +1,5 @@
-import { test } from './hashmap.js';
+import { test, HashMap } from './hashmap.js';
 
-test();
+let map = new HashMap();
+
+test(map.hash('dog'));
