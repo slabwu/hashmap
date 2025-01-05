@@ -91,6 +91,17 @@ export class linkedList {
         return null;
     }
 
+    replace(key, value) {
+        let node = this.#head;
+        while (node !== null) {
+            if (node[key]) {
+                node[key] = value;
+            }
+            node = node.next;
+        }
+        return;
+    }
+
     delete(key) {
         let node = this.#head;
         let index = 0;

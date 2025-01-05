@@ -14,6 +14,7 @@ test.set('ice cream', 'white')
 test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
+test.set('moon', 'cheese')
 test.set('moon', 'silver')
 
 console.log(test.keys());
