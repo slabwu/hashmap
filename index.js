@@ -1,13 +1,21 @@
-import { test, HashMap } from './hashmap.js';
+import { HashMap } from './hashmap.js';
 
-let map = new HashMap();
+let test = new HashMap();
 
-map.set('dog', 'blue');
-map.set('panther', 'pink');
-map.set('horse', 'brown');
+test.set('apple', 'red')
+test.set('banana', 'yellow')
+test.set('carrot', 'orange')
+test.set('dog', 'brown')
+test.set('elephant', 'gray')
+test.set('frog', 'green')
+test.set('grape', 'purple')
+test.set('hat', 'black')
+test.set('ice cream', 'white')
+test.set('jacket', 'blue')
+test.set('kite', 'pink')
+test.set('lion', 'golden')
 
-console.log(map.keys());
-console.log(map.values());
-console.log(map.entries());
-
-test(map.length());
+// console.log(test.keys());
+// console.log(test.values());
+// console.log(test.entries());
+// console.log(test.length());

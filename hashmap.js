@@ -1,17 +1,15 @@
 import { linkedList } from './linkedList.js'
 
-export function test(text) {
-    console.log(text);
-}
-
 export class HashMap {
     #buckets;
     #loadFactor;
     #capacity;
+    #length;
     constructor() {
         this.#capacity = 16;
         this.#loadFactor = 0.75;
         this.#buckets = Array(this.#capacity);
+        this.#length = 0;
     }
 
     hash(key) {
@@ -26,11 +24,22 @@ export class HashMap {
     }
 
     set(key, value) {
-        let index = this.hash(key) % this.#capacity;
-        if (this.#buckets[index] === undefined) {
-            this.#buckets.splice(index, 1, new linkedList());
+        if (this.#buckets[this.hash(key) % this.#capacity] === undefined) {
+            this.#buckets.splice(this.hash(key) % this.#capacity, 1, new linkedList());
         }
-        this.#buckets[index].append(key, value);
+
+        // if (this.length() >= this.#capacity * this.#loadFactor) {
+        //     this.#capacity *= 2;
+        //     let values = this.values();
+        //     this.clear();
+        //     values.forEach(value => this.set(value[0], value[1]));
+        // }
+
+        this.#buckets[this.hash(key) % this.#capacity].append(key, value);
+        this.#length++;
+        
+        console.log(this.#length)
+        console.log(this.#buckets)
     }
 
     get(key) {
@@ -48,6 +57,7 @@ export class HashMap {
     remove(key) {
         let bucket = this.bucket(key);
         if (bucket === undefined) return false;
+        this.#length--;
         return bucket.delete(key);
     }
 
@@ -56,13 +66,7 @@ export class HashMap {
     }
 
     length() {
-        let length = 0;
-        this.#buckets.forEach(bucket => {
-            if (bucket) {
-                length += bucket.size;
-            }
-        })
-        return length;
+        return this.#length;
     }
 
     clear() {
