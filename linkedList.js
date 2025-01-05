@@ -15,13 +15,13 @@ export class linkedList {
         }
     }
 
-    // prepend(value) {
-    //     if (this.#list === undefined) {
-    //         this.initialise(value);
-    //     } else {
-    //         this.#head = new Node(value, this.#head);
-    //     }
-    // }
+    prepend(value) {
+        if (this.#list === undefined) {
+            this.initialise(value);
+        } else {
+            this.#head = new Node(value, this.#head);
+        }
+    }
 
     entries() {
         let output = [];
@@ -58,18 +58,18 @@ export class linkedList {
         return this.#tail.value;
     }
 
-    // at(index, check = false) {
-    //     let node = this.#head;
-    //     for (let i = 0; i < index; i++) {
-    //         node = node.next;
-    //     }
-    //     return (check === false)? node.value : node;
-    // }
+    at(index, check = false) {
+        let node = this.#head;
+        for (let i = 0; i < index; i++) {
+            node = node.next;
+        }
+        return (check === false)? node.value : node;
+    }
 
-    // pop() {
-    //     this.#tail = this.at(this.size - 2, true);
-    //     this.#tail.next = null;
-    // }
+    pop() {
+        this.#tail = this.at(this.size - 2, true);
+        this.#tail.next = null;
+    }
 
     contains(key) {
         let node = this.#head;

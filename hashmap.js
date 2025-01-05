@@ -26,9 +26,7 @@ export class HashMap {
     set(key, value) {
         console.log(`key ${key} exists? ${this.has(key)}`)
         if (this.has(key)) {
-            console.log('deleting...')
             this.#buckets[this.hash(key) % this.#capacity].replace(key, value);
-            //onsole.log(this.#buckets[this.hash(key) % this.#capacity].find(key) = value);
         } else {
             if (this.#length >= this.#capacity * this.#loadFactor) {
                 this.#capacity *= 2;
