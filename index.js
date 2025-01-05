@@ -1,4 +1,5 @@
 import { HashMap } from './hashmap.js';
+import { HashSet } from './hashset.js';
 
 let test = new HashMap();
 
@@ -24,3 +25,28 @@ console.log(test.keys());
 console.log(test.values());
 console.log(test.entries());
 console.log(test.length());
+
+
+
+let example = new HashSet();
+
+example.set('apple')
+example.set('banana')
+example.set('carrot')
+example.set('dog')
+example.set('elephant')
+example.set('frog')
+example.set('grape')
+example.set('hat')
+example.set('ice cream')
+example.set('jacket')
+example.set('kite')
+example.set('lion')
+example.set('moon')
+example.set('moon')
+
+console.log(example.get('moon'))
+console.log(example.has('moon'))
+console.log(example.remove('lion'))
+console.log(example.keys());
+console.log(example.length());

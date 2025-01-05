@@ -1,6 +1,6 @@
-import { linkedListBivariate } from './linkedList.js'
+import { linkedList } from './linkedList.js'
 
-export class HashMap {
+export class HashSet {
     #buckets;
     #loadFactor;
     #capacity;
@@ -23,22 +23,20 @@ export class HashMap {
         return hashCode;
     }
 
-    set(key, value) {
-        if (this.has(key)) {
-            this.#buckets[this.hash(key) % this.#capacity].replace(key, value);
-        } else {
+    set(key) {
+        if (!this.has(key)) {
             if (this.#length >= this.#capacity * this.#loadFactor) {
                 this.#capacity *= 2;
-                let entries = this.entries();
+                let keys = this.keys();
                 this.clear();
-                entries.forEach(entry => this.set(entry[0], entry[1]));
+                keys.forEach(entry => this.set(entry));
             }
     
             if (this.#buckets[this.hash(key) % this.#capacity] === undefined) {
-                this.#buckets.splice(this.hash(key) % this.#capacity, 1, new linkedListBivariate());
+                this.#buckets.splice(this.hash(key) % this.#capacity, 1, new linkedList());
             }
     
-            this.#buckets[this.hash(key) % this.#capacity].append(key, value);
+            this.#buckets[this.hash(key) % this.#capacity].append(key);
             this.#length++;
         }
     }
@@ -76,30 +74,12 @@ export class HashMap {
         this.#length = 0;
     }
 
-    entries() {
+    keys() {
         let output = [];
         this.#buckets.forEach(bucket => {
             if (bucket) {
                 output = output.concat(bucket.entries());
             }
-        })
-        return output;
-    }
-
-    keys() {
-        let output = [];
-        let entries = this.entries();
-        entries.forEach(entry => {
-            output.push(entry[0]);
-        })
-        return output;
-    }
-
-    values() {
-        let output = [];
-        let entries = this.entries();
-        entries.forEach(entry => {
-            output.push(entry[1]);
         })
         return output;
     }
