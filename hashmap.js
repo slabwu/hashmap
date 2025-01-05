@@ -24,22 +24,19 @@ export class HashMap {
     }
 
     set(key, value) {
+        if (this.#length >= this.#capacity * this.#loadFactor) {
+            this.#capacity *= 2;
+            let entries = this.entries();
+            this.clear();
+            entries.forEach(entry => this.set(entry[0], entry[1]));
+        }
+
         if (this.#buckets[this.hash(key) % this.#capacity] === undefined) {
             this.#buckets.splice(this.hash(key) % this.#capacity, 1, new linkedList());
         }
 
-        // if (this.length() >= this.#capacity * this.#loadFactor) {
-        //     this.#capacity *= 2;
-        //     let values = this.values();
-        //     this.clear();
-        //     values.forEach(value => this.set(value[0], value[1]));
-        // }
-
         this.#buckets[this.hash(key) % this.#capacity].append(key, value);
         this.#length++;
-        
-        console.log(this.#length)
-        console.log(this.#buckets)
     }
 
     get(key) {
@@ -72,6 +69,7 @@ export class HashMap {
     clear() {
         this.#buckets.length = 0;
         this.#buckets = Array(this.#capacity);
+        this.#length = 0;
     }
 
     entries() {
