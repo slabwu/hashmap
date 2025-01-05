@@ -61,12 +61,40 @@ export class HashMap {
             if (bucket) {
                 length += bucket.size;
             }
-        });
+        })
         return length;
     }
 
     clear() {
         this.#buckets.length = 0;
         this.#buckets = Array(this.#capacity);
+    }
+
+    entries() {
+        let output = [];
+        this.#buckets.forEach(bucket => {
+            if (bucket) {
+                output = output.concat(bucket.entries());
+            }
+        })
+        return output;
+    }
+
+    keys() {
+        let output = [];
+        let entries = this.entries();
+        entries.forEach(entry => {
+            output.push(entry[0]);
+        })
+        return output;
+    }
+
+    values() {
+        let output = [];
+        let entries = this.entries();
+        entries.forEach(entry => {
+            output.push(entry[1]);
+        })
+        return output;
     }
 }

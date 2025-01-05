@@ -23,20 +23,16 @@ export class linkedList {
     //     }
     // }
 
-    // toString() {
-    //     if (this.#list === undefined) {
-    //         console.log('Unable to print empty list');
-    //         return;
-    //     }
-
-    //     let output = '';
-    //     let node = this.#head;
-    //     while(node !== null) {
-    //         output += `( ${node.value} ) -> `;
-    //         node = node.next;
-    //     }
-    //     console.log(output + 'null');
-    // }
+    entries() {
+        let output = [];
+        let node = this.#head;
+        while(node !== null) {
+            let key = String(Object.keys(node).filter(key => key !== 'next'));
+            output.push([key, node[key]]);
+            node = node.next;
+        }
+        return output;
+    }
 
     initialise(key, value) {
         this.#list = new Node(key, value, null);
