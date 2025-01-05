@@ -12,7 +12,6 @@ export class HashMap {
         this.#capacity = 16;
         this.#loadFactor = 0.75;
         this.#buckets = Array(this.#capacity);
-        console.log(this.#buckets);
     }
 
     hash(key) {
@@ -32,8 +31,6 @@ export class HashMap {
             this.#buckets.splice(index, 1, new linkedList());
         }
         this.#buckets[index].append(key, value);
-
-        console.log(this.#buckets);
     }
 
     get(key) {
@@ -66,5 +63,10 @@ export class HashMap {
             }
         });
         return length;
+    }
+
+    clear() {
+        this.#buckets.length = 0;
+        this.#buckets = Array(this.#capacity);
     }
 }
